@@ -51,5 +51,20 @@ namespace BeauCrumley_p1.Controllers
                 return _userMethods.BlankUser();
             }
         }
+
+        [HttpPost("{newUserData}")]
+        public string Post(string newUserData)
+        {
+            Console.WriteLine("NEW USER DATA RECIEVED: " + newUserData);
+            bool isNewUser = _userMethods.registerNewUser(newUserData);
+            if (isNewUser)
+            {
+                return "1. Account Creation Successful";
+            }
+            else
+            {
+                return "0. User already exists.";
+            }
+        }
     }
 }

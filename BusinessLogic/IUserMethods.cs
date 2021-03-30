@@ -8,6 +8,7 @@ namespace BusinessLogic
         List<IAUser> GetUsers();
         List<IAUser> GetUsers(string email);
         bool IsUser(string email);
+        bool registerNewUser(string userData);
         IAUser BlankUser();
         IAState GetState(int Id);
         List<IAStore> GetStores();

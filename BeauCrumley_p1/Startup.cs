@@ -36,13 +36,14 @@ namespace BeauCrumley_p1
             services.AddDbContext<Project1_DBContext>( options => 
             {
                 options.UseSqlServer("Server=.\\SQLEXPRESS;Database=Project1_DB;Trusted_Connection=True;");
-            }, 0);
+            });
 
-            services.AddSingleton<IProcessLogger, ConsoleLogger>();
-            services.AddSingleton<IUserMethods, UserMethods>();
-            services.AddSingleton<ILoginMethods, LoginMethods>();
-            services.AddSingleton<IFactory, Factory>();
-            services.AddSingleton<IDataFetcher, DataFetcher>();
+            services.AddScoped<IProcessLogger, ConsoleLogger>();
+            services.AddScoped<IUserMethods, UserMethods>();
+            services.AddScoped<ILoginMethods, LoginMethods>();
+            services.AddScoped<IFactory, Factory>();
+            services.AddScoped<IDataFetcher, DataFetcher>();
+            services.AddScoped<IDataSaver, DataSaver>();
             /*services.AddScoped<AUser>();
             services.AddScoped<AStore>();
             services.AddScoped<AState>();*/

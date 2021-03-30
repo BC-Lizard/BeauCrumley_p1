@@ -1,9 +1,9 @@
 
 function setInputErrorStyle(element)
 {
-    element.classList.Add("input-error");
+    element.classList.add("input-error");
 }
 function removeInputErrorStyle(element)
 {
-    element.classList.Remove("input-error");
+    element.classList.remove("input-error");
 }

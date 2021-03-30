@@ -10,11 +10,13 @@ namespace BusinessLogic
     {
         private readonly IFactory _factory;
         private readonly IDataFetcher _repoDataFetcher;
+        private readonly IDataSaver _repoDataSaver;
         public UserMethods() { }
-        public UserMethods(IFactory factory, IDataFetcher repoDataFetcher)
+        public UserMethods(IFactory factory, IDataFetcher repoDataFetcher, IDataSaver repoDataSaver)
         {
             _factory = factory;
             _repoDataFetcher = repoDataFetcher;
+            _repoDataSaver = repoDataSaver;
         }
         public List<IAUser> GetUsers()
         {
@@ -40,6 +42,42 @@ namespace BusinessLogic
         public bool IsUser(string email)
         {
             return _repoDataFetcher.RepoIsUser(email);
+        }
+
+        /// <summary>
+        /// Saves a new user to database. Returns true if the operation was successful. Returns false if use already exists.
+        /// userData is a string of data that makes up a user object, deliniated by '-'
+        /// Data order is as follows: FirstName-LastName-Username-PasswordSalt-HashedPassword-Phonenumber-Email
+        /// Permission level and default store data need to be appended in that order
+        /// </summary>
+        /// <param name="userData"></param>
+        /// <returns></returns>
+        public bool registerNewUser(string userData)
+        {
+            string[] parsedData = userData.Split("-");
+            List<string> objectData = new List<string>();
+            
+            objectData.Add("0");//add placeholder account no
+            //copy parsed data into mutable list
+            foreach (var i in parsedData)
+            {
+                objectData.Add(i);
+            }
+            objectData.Add("1");//add default permissions
+            objectData.Add("1");//add default store
+
+            IAUser newUser = _factory.CreateUser(objectData, _factory.CreateLogger());
+
+            if (IsUser(newUser.Email))
+            {
+                //user exists, don't add to database.
+                return false;
+            }
+            else
+            {
+                _repoDataSaver.RepoSaveNewUser(objectData);
+                return true;
+            }
         }
 
         public IAUser BlankUser()
