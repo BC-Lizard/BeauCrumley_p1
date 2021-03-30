@@ -43,7 +43,7 @@ DefaultStore INT FOREIGN KEY REFERENCES Stores(StoreNo) ON DELETE CASCADE);
 
 INSERT INTO Users (Firstname, Lastname, Username, PasswordSalt, PasswordHash, Phone, Email, Permission, DefaultStore)
 VALUES
-('testfirst', 'testlast', 'TestUser', 'testsalt', '382D700319077F8A057F95A94D67BE197842E3A7A1CD522488E1763CB7122051', 1234567890, 'test@email.com', 7, 1);
+('testfirst', 'testlast', 'TestUser', 'testsalt', '382d700319077f8a057f95a94d67be197842e3a7a1cd522488e1763cb7122051', 1234567890, 'test@email.com', 7, 1);
 --password is 'testpassword'
 
 --SELECT * FROM Users;

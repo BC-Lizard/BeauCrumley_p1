@@ -14,6 +14,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessLogic.Logging;
+using BusinessLogic.Models;
+using BusinessLogic;
+using Repository;
 
 namespace BeauCrumley_p1
 {
@@ -32,7 +36,16 @@ namespace BeauCrumley_p1
             services.AddDbContext<Project1_DBContext>( options => 
             {
                 options.UseSqlServer("Server=.\\SQLEXPRESS;Database=Project1_DB;Trusted_Connection=True;");
-            });
+            }, 0);
+
+            services.AddSingleton<IProcessLogger, ConsoleLogger>();
+            services.AddSingleton<IUserMethods, UserMethods>();
+            services.AddSingleton<ILoginMethods, LoginMethods>();
+            services.AddSingleton<IFactory, Factory>();
+            services.AddSingleton<IDataFetcher, DataFetcher>();
+            /*services.AddScoped<AUser>();
+            services.AddScoped<AStore>();
+            services.AddScoped<AState>();*/
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
