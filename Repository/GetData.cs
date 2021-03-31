@@ -32,7 +32,7 @@ namespace Repository
                     user.Username,
                     user.PasswordSalt,
                     user.PasswordHash,
-                    user.Phone.ToString(),
+                    user.Phone,
                     user.Email,
                     user.Permission.ToString(),
                     user.DefaultStore.ToString()
@@ -56,7 +56,7 @@ namespace Repository
                     user.Username,
                     user.PasswordSalt,
                     user.PasswordHash,
-                    user.Phone.ToString(),
+                    user.Phone,
                     user.Email,
                     user.Permission.ToString(),
                     user.DefaultStore.ToString()

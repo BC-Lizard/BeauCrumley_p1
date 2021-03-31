@@ -27,6 +27,7 @@ function attemptRegister()
         fetch(`api/Users/${newUserDataString}`, {method: 'POST'})
             .then(response => response.text())
             .then(response => console.log(response));
+            logout(false);
     } else {
         console.warn(". . .Input errors detected. Canceling registration attempt.");
     }
@@ -52,9 +53,6 @@ function generateUserDataString(salt, password)
     str += password + "-";
     str += registerFormInputs[5].value + "-";
     str += registerFormInputs[0].value;
-
-    /*str = str.replace(".", "%2E");
-    str = str.replace("@", "%40");*/
 
     console.log(str);
 

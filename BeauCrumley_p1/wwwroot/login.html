@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="defaults.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/gif" href="favicon.gif"/>
+    <title>My App - Login</title>
+</head>
+<body>
+<main>
+    <a href="index.html">Home</a>
+    <div id="login-window">
+        Login Window
+        <div class="form-field">
+            <label for="useremail">Email</label>
+            <input type="email" name="useremail" id="useremail" placeholder="Email" />
+        </div>
+        <div class="form-field">
+            <label for="useremail">Password</label>
+            <input type="password" name="userpassword" id="userpassword" placeholder="Password" />
+        </div>
+        <div class="form-button">
+            <input type="button" id="login-button" value="Login" />
+        </div>
+    </div>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/sha256.js"></script>
+    <script src="scripts/login.js"></script>
+</main>
+</body>
+</html>

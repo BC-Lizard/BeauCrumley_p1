@@ -18,7 +18,7 @@ namespace Repository.dbModels
         public string Username { get; set; }
         public string PasswordSalt { get; set; }
         public string PasswordHash { get; set; }
-        public decimal? Phone { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
         public int Permission { get; set; }
         public int? DefaultStore { get; set; }

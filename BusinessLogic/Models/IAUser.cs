@@ -10,7 +10,7 @@
         string PasswordHash { get; set; }
         string PasswordSalt { get; set; }
         int Permission { get; set; }
-        decimal Phone { get; set; }
+        string Phone { get; set; }
         string Username { get; set; }
     }
 }

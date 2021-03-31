@@ -20,7 +20,7 @@ namespace BusinessLogic.Models
             Username = data[3];
             PasswordSalt = data[4];
             PasswordHash = data[5];
-            Phone = int.Parse(data[6]);
+            Phone = data[6];
             Email = data[7];
             Permission = int.Parse(data[8]);
             DefaultStore = int.Parse(data[9]);
@@ -34,7 +34,7 @@ namespace BusinessLogic.Models
         public string Username { get; set; }
         public string PasswordSalt { get; set; }
         public string PasswordHash { get; set; }
-        public decimal Phone { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
         public int Permission { get; set; }
         public int DefaultStore { get; set; }

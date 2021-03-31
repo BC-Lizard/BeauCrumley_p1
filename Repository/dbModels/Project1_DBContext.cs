@@ -198,7 +198,11 @@ namespace Repository.dbModels
                     .HasMaxLength(64)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Phone).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Phone)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
 
                 entity.Property(e => e.Username)
                     .IsRequired()

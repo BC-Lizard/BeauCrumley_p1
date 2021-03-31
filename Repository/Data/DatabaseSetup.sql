@@ -36,14 +36,14 @@ Lastname VARCHAR(50) NOT NULL,
 Username VARCHAR(50) NOT NULL,
 PasswordSalt VARCHAR(64) NOT NULL,
 PasswordHash CHAR(64) NOT NULL,
-Phone NUMERIC,
+Phone char(10) NOT NULL,
 Email VARCHAR(50) NOT NULL,
 Permission INT NOT NULL,
 DefaultStore INT FOREIGN KEY REFERENCES Stores(StoreNo) ON DELETE CASCADE);
 
 INSERT INTO Users (Firstname, Lastname, Username, PasswordSalt, PasswordHash, Phone, Email, Permission, DefaultStore)
 VALUES
-('testfirst', 'testlast', 'TestUser', 'testsalt', '382d700319077f8a057f95a94d67be197842e3a7a1cd522488e1763cb7122051', 1234567890, 'test@email.com', 7, 1);
+('testfirst', 'testlast', 'TestUser', 'testsalt', '382d700319077f8a057f95a94d67be197842e3a7a1cd522488e1763cb7122051', '0123456789', 'test@email.com', 7, 1);
 --password is 'testpassword'
 
 --SELECT * FROM Users;

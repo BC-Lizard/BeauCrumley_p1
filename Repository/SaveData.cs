@@ -26,7 +26,7 @@ namespace Repository
             newUser.Username = data[3];
             newUser.PasswordSalt = data[4];
             newUser.PasswordHash = data[5];
-            newUser.Phone = int.Parse(data[6]);
+            newUser.Phone = data[6];
             newUser.Email = data[7];
             newUser.Permission = int.Parse(data[8]);
             newUser.DefaultStore = int.Parse(data[9]);

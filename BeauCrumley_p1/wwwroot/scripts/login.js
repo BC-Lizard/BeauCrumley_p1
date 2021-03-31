@@ -1,10 +1,8 @@
 
 addLoginEventListeners();
 
-var signedInUser;
-
 function addLoginEventListeners() {
-    document.querySelector('#login-button').addEventListener('click', attemptLogin)
+    document.querySelector('#login-button').addEventListener('click', attemptLogin);
 }
 
 function attemptLogin()
@@ -21,7 +19,7 @@ function attemptLogin()
             let passed = checkValidSalt(salt);
             if (passed) {
                 let hashedPass = hashPasswordUsingSalt(salt, user_password_input);
-                signedInUser = loginWithHash(user_email_input, hashedPass);
+                loginWithHash(user_email_input, hashedPass);
             } else {
                 console.log("Failed to verify user.");
             }
@@ -34,6 +32,8 @@ function loginWithHash(email, pass)
         .then(data => {
             console.log("Response to login attempt with email and password.");
             console.log(data);
+            signedInUser = data;
+            updateLinksWithSignedInUser();
             if (data.accountNo == 0) {
                 setLoginError();
             } else {
@@ -43,7 +43,6 @@ function loginWithHash(email, pass)
             }
             return data;
         });
-    return response;
 }
 
 function setLoginError()
@@ -68,12 +67,6 @@ function checkValidSalt(str)
     } else {
         return true;
     }
-}
-
-function clearFields()
-{
-    document.querySelector("#useremail").value = "";
-    document.querySelector("#userpassword").value = "";
 }
 
 async function postLoginCreds(email, pass)
