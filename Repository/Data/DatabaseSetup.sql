@@ -59,7 +59,7 @@ PartImage VARCHAR(100));
 
 INSERT INTO Items(PartName, PartDescription, PartPrice, PartSale, PartImage)
 VALUES
-('testpart', 'this describes the test part', 7.77, 0.0, '../../Images/testpart.jpg');
+('testpart', 'this describes the test part', 7.77, 0.0, 'Images/testpart.jpg');
 
 --SELECT * FROM Items;
 

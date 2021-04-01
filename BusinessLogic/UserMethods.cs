@@ -101,6 +101,15 @@ namespace BusinessLogic
             return stores;
         }
 
+        public IAStore GetStores(int Id)
+        {
+            var data = _repoDataFetcher.RepoGetStoreData(Id);
+            IAStore newStore = _factory.CreateStore(data[0], _factory.CreateLogger());
+            InitStoreState(newStore);
+            InitStoreInventory(newStore);
+            return newStore;
+        }
+
         private void InitStoreState(IAStore store)
         {
             store.StoreState = GetState(store.StoreStateId);

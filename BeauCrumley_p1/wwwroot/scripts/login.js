@@ -40,6 +40,7 @@ function loginWithHash(email, pass)
                 clearFields();
                 clearLoginError();
                 setLoginSuccess();
+                document.querySelector("#home-link").click();
             }
             return data;
         });

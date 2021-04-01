@@ -30,9 +30,9 @@ namespace BeauCrumley_p1.Controllers
 
         // GET api/<StoresController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IAStore Get(int id)
         {
-            return "value";
+            return _userMethods.GetStores(id);
         }
 
         // POST api/<StoresController>

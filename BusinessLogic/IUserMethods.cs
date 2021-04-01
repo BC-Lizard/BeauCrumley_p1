@@ -12,6 +12,7 @@ namespace BusinessLogic
         IAUser BlankUser();
         IAState GetState(int Id);
         List<IAStore> GetStores();
+        IAStore GetStores(int Id);
         List<IAItem> GetAllItems();
     }
 }

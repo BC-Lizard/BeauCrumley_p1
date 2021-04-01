@@ -3,46 +3,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="defaults.css" rel="stylesheet" />
+    <link href="styles/defaults.css" rel="stylesheet" />
     <link rel="shortcut icon" type="image/gif" href="favicon.gif"/>
     <title>My App - Login</title>
 </head>
 <body>
-<main>
-    <a href="index.html">Home</a>
-    <div id="register-window">
-        Register Window
-        <div class="form-field">
-            <label for="registeremail">Email</label>
-            <input type="email" name="registeremail" id="registeremail" placeholder="Email" />
-        </div>
-        <div class="form-field">
-            <label for="registeruser">Username</label>
-            <input type="text" name="registeruser" id="registeruser" placeholder="Enter Username" />
-        </div>
-        <div class="form-field">
-            <label for="registerfname">First Name</label>
-            <input type="text" name="registerfname" id="registerfname" placeholder="Enter First Name" />
-        </div>
-        <div class="form-field">
-            <label for="registerlname">Last Name</label>
-            <input type="text" name="registerlname" id="registerlname" placeholder="Enter Last Name" />
-        </div>
-        <div class="form-field">
-            <label for="registerpass">Password</label>
-            <input type="password" name="registerpass" id="registerpass" placeholder="Password" />
-        </div>
-        <div class="form-field">
-            <label for="registerphone">Phone Number</label>
-            <input type="tel" name="registerphone" id="registerphone" placeholder="Enter Phone Number" />
-        </div>
-        <div class="form-button">
-            <input type="button" id="register-button" value="Register" />
-        </div>
+    <div class="banner">
+        <nav>
+            <a id="home-link" href="index.html"><img src="Images/logo.png"></a>
+        </nav>
     </div>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/sha256.js"></script>
-    <script src="scripts/register.js"></script>
-</main>
+    <main>
+        <div id="register-window">
+            Register Window
+            <div class="form-field">
+                <label for="registeremail">Email</label>
+                <input type="email" name="registeremail" id="registeremail" placeholder="Email" />
+            </div>
+            <div class="form-field">
+                <label for="registeruser">Username</label>
+                <input type="text" name="registeruser" id="registeruser" placeholder="Enter Username" />
+            </div>
+            <div class="form-field">
+                <label for="registerfname">First Name</label>
+                <input type="text" name="registerfname" id="registerfname" placeholder="Enter First Name" />
+            </div>
+            <div class="form-field">
+                <label for="registerlname">Last Name</label>
+                <input type="text" name="registerlname" id="registerlname" placeholder="Enter Last Name" />
+            </div>
+            <div class="form-field">
+                <label for="registerpass">Password</label>
+                <input type="password" name="registerpass" id="registerpass" placeholder="Password" />
+            </div>
+            <div class="form-field">
+                <label for="registerphone">Phone Number</label>
+                <input type="tel" name="registerphone" id="registerphone" placeholder="Enter Phone Number" />
+            </div>
+            <div class="form-button">
+                <input type="button" id="register-button" value="Register" />
+            </div>
+        </div>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/sha256.js"></script>
+        <script src="scripts/register.js"></script>
+    </main>
 </body>
 </html>

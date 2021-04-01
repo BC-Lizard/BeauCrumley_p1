@@ -9,8 +9,12 @@ function updateUserWithUrlParams()
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const user = urlParams.get('user');
-    signedInUser = JSON.parse(user);
-    console.log(signedInUser);
+    try {
+        signedInUser = JSON.parse(user);
+    } catch(err) {
+        console.warn("Issue processing user. Returning to login. . .");
+        window.location.href = "login.html";
+    }
 }
 
 function setInputErrorStyle(element)
@@ -28,7 +32,12 @@ function updateLinksWithSignedInUser()
     let href = "";
     for (let i = 0; i < elems.length; i++) {
         href = elems[i].getAttribute("href");
-        elems[i].setAttribute("href", `${href}?user=${JSON.stringify(signedInUser)}`);
+        if (href.indexOf("?") == -1) {
+            hrefCropped = href;
+        } else {
+            hrefCropped = href.substr(0, href.indexOf("?"));
+        }
+        elems[i].setAttribute("href", `${hrefCropped}?user=${JSON.stringify(signedInUser)}`);
     }
 }
 
@@ -47,6 +56,4 @@ function clearFields()
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].querySelector("input").value = "";       
     }
-    /*document.querySelector("#useremail").value = "";
-    document.querySelector("#userpassword").value = "";*/
 }
