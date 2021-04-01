@@ -12,14 +12,16 @@ let cart = {
         for (let i = 0; i < this.items.length; i++) {
             subtotal += (this.items[i].price * this.items[i].quantity);
         }
-        return subtotal;
+        return parseFloat(subtotal.toFixed(2));
     },
     tax: function() {
         let taxrate = activeStore.storeState.taxRate;
-        return this.subtotal * taxrate;
+        let tax = this.subtotal() * taxrate;
+        return parseFloat(tax.toFixed(2));
     },
     total: function() {
-        return this.subtotal + this.tax;
+        total = this.subtotal() + this.tax();
+        return parseFloat(total.toFixed(2));
     }
 };
 
@@ -72,6 +74,9 @@ function addToCart(partId)
         cart.items.push(newItem);
     }
     console.log(cart);
+    console.log(cart.subtotal());
+    console.log(cart.tax());
+    console.log(cart.total());
 }
 
 function getPartPrice(Id) {
