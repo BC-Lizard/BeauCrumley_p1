@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"BC12807_BeauCrumley_p1" /o:"bc12807" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          <your clean build command>
+          dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
+        shell: bash
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"BC12807_BeauCrumley_p1" /o:"bc12807" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build
