@@ -34,23 +34,5 @@ namespace BeauCrumley_p1.Controllers
         {
             return _userMethods.GetStores(id);
         }
-
-        // POST api/<StoresController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<StoresController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<StoresController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

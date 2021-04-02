@@ -21,13 +21,6 @@ namespace BeauCrumley_p1.Controllers
             _userMethods = userMethods;
         }
 
-        // GET: api/<OrdersController>
-        [HttpGet]
-        public bool Get()
-        {
-            return true;
-        }
-
         // POST api/<OrdersController>
         [HttpPost("{orderData}/{itemData}")]
         public string Post(string orderData, string itemData)
@@ -40,18 +33,6 @@ namespace BeauCrumley_p1.Controllers
             {
                 return "Order Failed To Complete.";
             }
-        }
-
-        // PUT api/<OrdersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<OrdersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
