@@ -14,7 +14,6 @@ body {
 .banner {
     height: 120px;
     background-color: #00611d;
-    margin-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,4 +51,17 @@ a:active {
 
 #home-link {
     background-color: rgba(0, 0, 0, 0);
+}
+
+#signed-in {
+    text-align: center;
+    color: #fff;
+    margin-top: 6px;
+    margin-bottom: 50px;
+}
+#signed-in-as {
+    display: inline;
+    background-color: #00611d;
+    padding: 7px;
+    border-radius: 0 0 5px 5px;
 }

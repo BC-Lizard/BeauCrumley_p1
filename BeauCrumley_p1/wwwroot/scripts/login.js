@@ -40,7 +40,7 @@ function loginWithHash(email, pass)
             signedInUser = data;
             updateLinksWithSignedInUser();
             if (data.accountNo == 0) {
-                setLoginError();
+                console.warn("Login not successful. Check email and password are correct.");
             } else {
                 clearFields();
                 document.querySelector("#home-link").click();

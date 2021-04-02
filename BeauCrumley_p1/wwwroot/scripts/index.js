@@ -11,9 +11,10 @@ function updateUserWithUrlParams()
     const user = urlParams.get('user');
     try {
         signedInUser = JSON.parse(user);
+        setSignedInText();
     } catch(err) {
-        console.warn("Issue processing user. Returning to login. . .");
-        window.location.href = "login.html";
+        console.warn("Issue processing user. User not signed in.");
+        //window.location.href = "login.html";
     }
 }
 
@@ -56,4 +57,9 @@ function clearFields()
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].querySelector("input").value = "";       
     }
+}
+
+function setSignedInText() {
+    document.querySelector("#signed-in-as").innerHTML = `Signed in as: ${signedInUser.username}`;
+    console.log("Signed in user: ", signedInUser);
 }
