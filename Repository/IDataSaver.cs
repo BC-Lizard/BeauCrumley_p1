@@ -4,6 +4,7 @@ namespace Repository
 {
     public interface IDataSaver
     {
-        public void RepoSaveNewUser(List<string> data);
+        void RepoSaveNewUser(List<string> data);
+        bool RepoSaveNewOrder(List<string> data, List<List<string>> items);
     }
 }

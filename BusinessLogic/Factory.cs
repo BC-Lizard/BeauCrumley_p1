@@ -20,11 +20,6 @@ namespace BusinessLogic
             return new ConsoleLogger();
         }
 
-        public IUserMethods CreateUserMethods()
-        {
-            return new UserMethods();
-        }
-
         public IAState CreateState(List<string> data, IProcessLogger logger)
         {
             return new AState(data, logger);
@@ -38,6 +33,11 @@ namespace BusinessLogic
         public IAItem CreateItem(List<string> data, IProcessLogger logger)
         {
             return new AItem(data, logger);
+        }
+
+        public IAOrder CreateOrder(List<string> data, IProcessLogger logger)
+        {
+            return new AOrder(data, logger);
         }
     }
 }

@@ -8,9 +8,9 @@ namespace BusinessLogic
     {
         IAUser CreateUser(List<string> data, IProcessLogger logger);
         IProcessLogger CreateLogger();
-        IUserMethods CreateUserMethods();
         IAState CreateState(List<string> data, IProcessLogger logger);
         IAStore CreateStore(List<string> data, IProcessLogger logger);
         IAItem CreateItem(List<string> data, IProcessLogger logger);
+        IAOrder CreateOrder(List<string> data, IProcessLogger logger);
     }
 }

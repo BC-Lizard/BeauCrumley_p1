@@ -1,6 +1,6 @@
 body {
     background-color: #6da362;
-    color: #faebd7;
+    color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
@@ -17,9 +17,39 @@ body {
     margin-bottom: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 50px;
     padding-right: 50px;
     border-color: #fff;
     border-bottom-style: solid;
     border-bottom-width: 10px;
+}
+
+.display-off {
+    display: none;
+}
+
+#title {
+    font-size: 40px;
+}
+
+a {
+    background-color: darkorange;
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color .2s;
+}
+a:hover {
+    background-color: #f8b562;
+}
+
+a:active {
+    background-color: darkorange;
+    color: #fff;
+}
+
+#home-link {
+    background-color: rgba(0, 0, 0, 0);
 }

@@ -64,7 +64,7 @@ namespace BusinessLogic
                 objectData.Add(i);
             }
             objectData.Add("1");//add default permissions
-            objectData.Add("1");//add default store
+            objectData.Add("3");//add default store
 
             IAUser newUser = _factory.CreateUser(objectData, _factory.CreateLogger());
 
@@ -149,6 +149,41 @@ namespace BusinessLogic
                 items.Add(_factory.CreateItem(part, _factory.CreateLogger()));
             }
             return items;
+        }
+
+        public bool saveNewOrder(string orderData, string itemData)
+        {
+            string[] parsedData = orderData.Split("-");
+            string[] parsedItems = itemData.Split("_");
+
+            List<List<string>> parsedItemData = new List<List<string>>();
+            for (var i = 0; i < parsedItems.Length; i++)
+            {
+                parsedItemData.Add(new List<string>());
+                string[] parsedItem = parsedItems[i].Split("-");
+                foreach (var elem in parsedItem)
+                {
+                    parsedItemData[i].Add(elem);
+                }
+            }
+
+            List<string> objectData = new List<string>();
+            
+            objectData.Add("0");//add placeholder order no
+            //copy parsed data into mutable list
+            foreach (var i in parsedData)
+            {
+                objectData.Add(i);
+            }
+
+            IAOrder newOrder = _factory.CreateOrder(objectData, _factory.CreateLogger());
+
+            if (_repoDataSaver.RepoSaveNewOrder(objectData, parsedItemData) == true) {
+                return true;
+            } else {
+                return false;
+            }
+            
         }
     }
 }

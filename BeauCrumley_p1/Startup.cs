@@ -44,9 +44,6 @@ namespace BeauCrumley_p1
             services.AddScoped<IFactory, Factory>();
             services.AddScoped<IDataFetcher, DataFetcher>();
             services.AddScoped<IDataSaver, DataSaver>();
-            /*services.AddScoped<AUser>();
-            services.AddScoped<AStore>();
-            services.AddScoped<AState>();*/
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

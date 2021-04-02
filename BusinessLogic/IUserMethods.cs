@@ -13,6 +13,8 @@ namespace BusinessLogic
         IAState GetState(int Id);
         List<IAStore> GetStores();
         IAStore GetStores(int Id);
+        IAItem GetItem(int Id);
         List<IAItem> GetAllItems();
+        bool saveNewOrder(string orderData, string itemData);
     }
 }

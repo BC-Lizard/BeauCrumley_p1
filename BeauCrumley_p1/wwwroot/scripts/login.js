@@ -10,20 +10,25 @@ function attemptLogin()
     let user_email_input = document.querySelector("#useremail").value;
     let user_password_input = document.querySelector("#userpassword").value;
 
-    fetch(`api/Users/${user_email_input}`)
-        .then(data => {
-            return data.text();
-        })
-        .then(salt => {
-            console.log("Response when getting user Salt: " + salt);
-            let passed = checkValidSalt(salt);
-            if (passed) {
-                let hashedPass = hashPasswordUsingSalt(salt, user_password_input);
-                loginWithHash(user_email_input, hashedPass);
-            } else {
-                console.log("Failed to verify user.");
-            }
-        });
+    if (checkLoginFields() == true) {
+        fetch(`api/Users/${user_email_input}`)
+            .then(data => {
+                return data.text();
+            })
+            .then(salt => {
+                console.log("Response when getting user Salt: " + salt);
+                let passed = checkValidSalt(salt);
+                if (passed) {
+                    let hashedPass = hashPasswordUsingSalt(salt, user_password_input);
+                    loginWithHash(user_email_input, hashedPass);
+                } else {
+                    console.log("Failed to verify user.");
+                }
+            });
+    } else {
+        console.warn("Login error. Please make sure fields are filled.");
+    }
+
 }
 
 function loginWithHash(email, pass)
@@ -38,26 +43,24 @@ function loginWithHash(email, pass)
                 setLoginError();
             } else {
                 clearFields();
-                clearLoginError();
-                setLoginSuccess();
                 document.querySelector("#home-link").click();
             }
             return data;
         });
 }
 
-function setLoginError()
+function checkLoginFields()
 {
-    //change page styles to show login error
-}
-function clearLoginError()
-{
-    //revert styles if login error gone
-}
-function setLoginSuccess()
-{
-    //set page to logged-in state
-    //unlock features that need user signed in
+    let noErrorsPresent = true;
+    if (document.querySelector("#useremail").value == "") {
+        noErrorsPresent = false;
+        setInputErrorStyle(document.querySelector("#useremail"));
+    }
+    if (document.querySelector("#userpassword").value == "") {
+        noErrorsPresent = false;
+        setInputErrorStyle(document.querySelector("#userpassword"));
+    }
+    return noErrorsPresent;
 }
 
 

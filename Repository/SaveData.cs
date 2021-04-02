@@ -34,5 +34,43 @@ namespace Repository
             _db.Users.Add(newUser);
             _db.SaveChanges();
         }
+
+        public bool RepoSaveNewOrder(List<string> data, List<List<string>> items)
+        {
+            Order newOrder = new Order();
+            DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(long.Parse(data[3]));
+            //newOrder.OrderNo = int.Parse(data[0]);
+            newOrder.StoreNo = int.Parse(data[1]);
+            newOrder.AccountNo = int.Parse(data[2]);
+            newOrder.OrderDate = dateTimeOffset.DateTime;
+            newOrder.Subtotal = decimal.Parse(data[4]);
+            newOrder.Tax = decimal.Parse(data[5]);
+            newOrder.Total = decimal.Parse(data[6]);
+            
+            _db.Orders.Add(newOrder);
+            _db.SaveChanges();
+
+            //get new order number
+            var recentOrder = _db.Orders
+                .Where(i => i.OrderDate == newOrder.OrderDate)
+                .ToList();
+                
+            List<OrderHistory> junct = new List<OrderHistory>();
+            for (int i = 0; i < items.Count; i++)
+            {
+                junct.Add(new OrderHistory());
+                junct[i].OrderNo = recentOrder[0].OrderNo;
+                junct[i].PartNo = int.Parse(items[i][0]);
+                junct[i].UnitPrice = decimal.Parse(items[i][1]);
+                junct[i].Quantity = int.Parse(items[i][2]);
+                _db.Inventories.SingleOrDefault(item => item.StoreNo == newOrder.StoreNo && item.PartNo == junct[i].PartNo).Quantity -= junct[i].Quantity;
+            }
+            foreach (var item in junct)
+            {
+                _db.OrderHistories.Add(item);
+            }
+            _db.SaveChanges();
+            return true;
+        }
     }
 }
